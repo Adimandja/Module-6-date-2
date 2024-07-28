@@ -1,0 +1,21 @@
+# Makefile for Date project
+
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall
+
+all: main
+
+main: main.o date.o dateExcept.o
+	$(CXX) $(CXXFLAGS) -o main main.o date.o dateExcept.o
+
+main.o: main.cpp date.h dateExcept.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+date.o: date.cpp date.h dateExcept.h
+	$(CXX) $(CXXFLAGS) -c date.cpp
+
+dateExcept.o: dateExcept.cpp dateExcept.h
+	$(CXX) $(CXXFLAGS) -c dateExcept.cpp
+
+clean:
+	rm -f *.o main
